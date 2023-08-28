@@ -1,20 +1,31 @@
+import { useState } from "react";
 import ChefRecomanded from "../../../assets/components/chefRecomended/ChefRecomanded";
 import Cover from "../../../assets/components/cover/Cover"
 import useMenu from "../../../assets/components/hooks/useMenu";
 import banner from "../../../assets/shop/banner2.jpg"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 const Shop = () => {
-    const menu =useMenu()
-    const desserts =menu.filter(item=>item.category=="dessert")
-    const pizzas =menu.filter(item=>item.category=="pizza")
-    const salads =menu.filter(item=>item.category=="salad")
-    const soups =menu.filter(item=>item.category=="soup")
-    const offereds =menu.filter(item=>item.category=="offered")
+    const category = useParams()
+    const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks']
+    const initialIndex = categories.indexOf(category)
+    const menu = useMenu()
+    const [tabIndex, setTabIndex] = useState(initialIndex);
+
+    const desserts = menu.filter(item => item.category == "dessert")
+    const pizzas = menu.filter(item => item.category == "pizza")
+    const salads = menu.filter(item => item.category == "salad")
+    const soups = menu.filter(item => item.category == "soup")
+    const offereds = menu.filter(item => item.category == "offered")
     return (
         <div>
+            <Helmet>
+                <title>Bistro Boss || Order</title>
+            </Helmet>
             <Cover featuredImg={banner} title="OUR SHOP" subTitle="WOULD YOU LIKE TO TRY A DISH ?"></Cover>
-            <Tabs className="mx-auto text-center ">
+            <Tabs className="mx-auto text-center " defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                 <TabList className="flex  ">
                     <Tab className="font-inter font-bold text-2xl text-center mx-auto hover:underline transition-all hover:text-[#BB8506]  uppercase">salad</Tab>
                     <Tab className="font-inter font-bold text-2xl text-center mx-auto hover:underline transition-all hover:text-[#BB8506] uppercase">pizza</Tab>
@@ -29,14 +40,14 @@ const Shop = () => {
                     <ChefRecomanded menu={pizzas}></ChefRecomanded>
                 </TabPanel>
                 <TabPanel>
-                <ChefRecomanded menu={soups}></ChefRecomanded>
+                    <ChefRecomanded menu={soups}></ChefRecomanded>
                 </TabPanel>
                 <TabPanel>
-                <ChefRecomanded menu={desserts}></ChefRecomanded>
+                    <ChefRecomanded menu={desserts}></ChefRecomanded>
 
                 </TabPanel>
                 <TabPanel>
-                <ChefRecomanded menu={offereds}></ChefRecomanded>
+                    <ChefRecomanded menu={offereds}></ChefRecomanded>
 
                 </TabPanel>
             </Tabs>

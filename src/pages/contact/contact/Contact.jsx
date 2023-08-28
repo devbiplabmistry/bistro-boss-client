@@ -5,10 +5,15 @@ import { AiFillPhone } from 'react-icons/ai';
 import { BiMap } from 'react-icons/bi';
 import { AiFillClockCircle } from 'react-icons/ai';
 import { FaTelegramPlane } from 'react-icons/fa';
+import { Helmet } from "react-helmet";
 
 const Contact = () => {
+
     return (
         <div>
+            <Helmet>
+                <title>Bistro Boss || Contact</title>
+            </Helmet>
             <Cover featuredImg={banner} title="CONTACT US" subTitle="WOULD YOU LIKE TO TRY A DISH ?"></Cover>
             <CommonTitle subTitle="---Visit Us---" title="OUR LOCATION"></CommonTitle>
             <div className="wrapper flex justify-center items-center gap-4  mt-12 mb-32">
@@ -79,7 +84,7 @@ const Contact = () => {
                                 </div>
                                 <div className="form-control mt-6 mx-auto">
                                     <button className="btn font-inter font-semibold text-xl  px-5 bg-gradient-to-r from-cyan-500 to-blue-500">Send Message
-                                    <FaTelegramPlane></FaTelegramPlane>
+                                        <FaTelegramPlane></FaTelegramPlane>
                                     </button>
                                 </div>
                             </div>

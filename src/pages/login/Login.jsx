@@ -1,14 +1,17 @@
 
+import { Helmet } from 'react-helmet';
 import image from '../../assets/others/authentication1.png';
 
 const Login = () => {
-
     return (
         <div>
+            <Helmet>
+                <title>Bistro Boss || Menu</title>
+            </Helmet>
             <div className="hero min-h-screen" >
                 <div className="hero-content flex">
                     <div className="text-center lg:text-left">
-                      <img src={image} alt="" className='w-[500px]'/>
+                        <img src={image} alt="" className='w-[500px]' />
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">

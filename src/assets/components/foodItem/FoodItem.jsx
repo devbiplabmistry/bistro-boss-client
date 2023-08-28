@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 
 
-const FoodItem = ({menu}) => {
+const FoodItem = ({menu,category}) => {
     return (
         <div>
             <div className="grid grid-cols-2 gap-4 my-12">
@@ -18,7 +19,9 @@ const FoodItem = ({menu}) => {
                     </div>
                 ))}
             </div>
-            <button className="btn btn-outline border-0 border-b-2 font-inter font-medium text-xl mx-auto block">ORDER YOUR FAVOURITE FOOD</button>
+           <Link to={`/shop/${category}`}>
+           <button  className="btn btn-outline border-0 border-b-2 font-inter font-medium text-xl mx-auto block">ORDER YOUR FAVOURITE FOOD</button>
+           </Link>
         </div>
     );
 };

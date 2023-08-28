@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 const Navbar = () => {
     const [show,setShow]=useState(true)
     const location =useLocation()
-    console.log(location.pathname);
+    // console.log(location.pathname);
   useEffect(()=>{   
     if(location.pathname =="/login" || location.pathname =="/signUp"){
         setShow(false)
@@ -29,8 +29,8 @@ const Navbar = () => {
                                   <li className="uppercase font-inter text-lg font-extrabold hover:text-red-500"><a>home</a></li>
                                   <li className="uppercase font-inter text-lg font-extrabold"><a className="hover:text-[#EEFF25] text-white">contact us</a></li>
                                   <li className="uppercase font-inter text-lg font-extrabold"><a className="hover:text-[#EEFF25] text-white">dashboard</a></li>
-                                  <li className="uppercase font-inter text-lg font-extrabold"><a className="hover:text-[#EEFF25] text-white">our menu</a></li>
-                                  <li className="uppercase font-inter text-lg font-extrabold"><a className="hover:text-[#EEFF25] text-white">our shop</a></li>
+                                  <li className="uppercase font-inter text-lg font-extrabold"><Link to="/menu" className="hover:text-[#EEFF25] text-white">our menu</Link></li>
+                                  <li className="uppercase font-inter text-lg font-extrabold"><Link to="/shop" className="hover:text-[#EEFF25] text-white">our shop</Link></li>
                                   <li>
                                       <BsFillCartFill className='text-xl text-white'></BsFillCartFill>
                                       <div className="badge badge-secondary">+0</div>

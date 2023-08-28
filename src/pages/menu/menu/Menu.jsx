@@ -17,21 +17,21 @@ const Menu = () => {
     const offereds =menu.filter(item=>item.category=="offered")
     return (
         <div className="mb-8">
-            <Helmet>Bistro Boss || Menu</Helmet>
+            <Helmet><title>Bistro Boss || Menu</title></Helmet>
             <Cover featuredImg={banner} title="OUR MENU" subTitle="WOULD YOU LIKE TO TRY A DISH ?"></Cover>
             <CommonTitle subTitle="---Don't miss---" title="TODAY'S OFFER"></CommonTitle>
-            <FoodItem menu={offereds}></FoodItem>
+            <FoodItem menu={offereds} category="offered"></FoodItem>
             <Cover featuredImg={chefImg} title="DESSERTS" subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>  
-            <FoodItem menu={desserts}></FoodItem>
+            <FoodItem menu={desserts} category="desserts"></FoodItem>
 
             <Cover featuredImg={chefImg} title="PIZZA" subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>
-            <FoodItem menu={pizzas}></FoodItem>
+            <FoodItem menu={pizzas} category="pizzas"></FoodItem>
 
             <Cover featuredImg={chefImg} title="SALAD" subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>
-            <FoodItem menu={salads}></FoodItem>
+            <FoodItem menu={salads} category="salads"></FoodItem>
 
             <Cover featuredImg={chefImg} title="soup" subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>
-            <FoodItem menu={soups}></FoodItem>
+            <FoodItem menu={soups} category="soup"></FoodItem>
 
         </div>
     );
