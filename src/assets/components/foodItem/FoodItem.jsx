@@ -1,16 +1,10 @@
-import  { useState} from "react";
-import useMenu from "../hooks/useMenu";
 
-const PopularMenu = () => {
-    const [showFullMenu, setShowFullMenu] = useState(false);
-const menu=useMenu()
-    const viewFullMenu = () => {
-        setShowFullMenu(true);
-    };
+
+const FoodItem = ({menu}) => {
     return (
-        <>
+        <div>
             <div className="grid grid-cols-2 gap-4 my-12">
-                {menu.slice(0, showFullMenu ? menu.length : 6).map(item => (
+                {menu.map(item => (
                     <div key={item._id}>
                         <div className="flex gap-4">
                             <div>
@@ -24,13 +18,10 @@ const menu=useMenu()
                     </div>
                 ))}
             </div>
-            {!showFullMenu && (
-                <div className="mx-auto text-center mb-12">
-                    <button onClick={viewFullMenu} className="btn btn-outline border-0 border-b-4">View Full Menu</button>
-                </div>
-            )}
-        </>
+            <button className="btn btn-outline border-0 border-b-2 font-inter font-medium text-xl mx-auto block">ORDER YOUR FAVOURITE FOOD</button>
+
+        </div>
     );
 };
 
-export default PopularMenu;
+export default FoodItem;

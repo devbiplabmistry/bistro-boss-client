@@ -9,12 +9,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css';
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
-
-
-
-
-
-
 const Testimonials = () => {
     const [comments,setComments]=useState([])
     useEffect(()=>{
@@ -22,7 +16,6 @@ const Testimonials = () => {
         .then(res=>res.json())
         .then(data=>setComments(data))
     },[])
-
     return (
         <div>
             <CommonTitle subTitle="---What Our Clients Say---" title="TESTIMONIALS"></CommonTitle>
@@ -54,11 +47,6 @@ const Testimonials = () => {
         )
        }
       </Swiper>
-
-
-
-
-
         </div>
     );
 };

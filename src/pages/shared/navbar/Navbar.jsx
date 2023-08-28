@@ -1,12 +1,11 @@
-import { Helmet } from 'react-helmet';
+
 import { BsPersonCircle } from 'react-icons/bs';
 import { BsFillCartFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 const Navbar = () => {
     return (
         <div className='absolute w-full z-40'>
-            <Helmet>
-                <title>Bistro Boss || Navbar</title>
-            </Helmet>
+
             <div className="navbar ">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -31,11 +30,11 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li className="uppercase font-inter text-lg font-extrabold"><a className="hover:text-[#EEFF25] text-white">home</a></li>
+                        <li className="uppercase font-inter text-lg font-extrabold"><Link to="/" className="hover:text-[#EEFF25] text-white">home</Link></li>
                         <li className="uppercase font-inter text-lg font-extrabold"><a className="hover:text-[#EEFF25] text-white">contact us</a></li>
                         <li className="uppercase font-inter text-lg font-extrabold"><a className="hover:text-[#EEFF25] text-white">dashboard</a></li>
-                        <li className="uppercase font-inter text-lg font-extrabold"><a className="hover:text-[#EEFF25] text-white">our menu</a></li>
-                        <li className="uppercase font-inter text-lg font-extrabold"><a className="hover:text-[#EEFF25] text-white">our shop</a></li>
+                        <li className="uppercase font-inter text-lg font-extrabold"><Link to="/menu" className="hover:text-[#EEFF25] text-white">our menu</Link></li>
+                        <li className="uppercase font-inter text-lg font-extrabold"><Link to="/shop" className="hover:text-[#EEFF25] text-white">our shop</Link></li>
                         <button >
                             <BsFillCartFill className='text-4xl'></BsFillCartFill>
                             <div className="badge badge-secondary">+0</div>

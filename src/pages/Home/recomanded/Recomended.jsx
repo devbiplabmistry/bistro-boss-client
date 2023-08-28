@@ -1,10 +1,11 @@
+import useMenu from "../../../assets/components/hooks/useMenu";
 
-
-const ChefRecomanded = ({menu}) => {
+const Recomanded = () => {
+    const menu =useMenu()
     return (
         <div className="grid grid-cols-3 gap-8 mt-12 mb-32">
           {
-            menu.map(item => (
+            menu.slice(0,3).map(item => (
                 <div key={item._id} className="card card-compact w-96 bg-base-100 shadow-xl">
                     <figure><img src={item.image} alt="Shoes" /></figure>
                     <div className="card-body">
@@ -21,4 +22,4 @@ const ChefRecomanded = ({menu}) => {
     );
 };
 
-export default ChefRecomanded;
+export default Recomanded;
