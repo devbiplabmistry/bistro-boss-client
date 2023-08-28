@@ -19,7 +19,6 @@ const FoodItem = ({menu}) => {
                 ))}
             </div>
             <button className="btn btn-outline border-0 border-b-2 font-inter font-medium text-xl mx-auto block">ORDER YOUR FAVOURITE FOOD</button>
-
         </div>
     );
 };
