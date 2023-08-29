@@ -2,26 +2,58 @@
 import { Helmet } from 'react-helmet';
 import image from "../../assets/others/authentication2.png"
 import { BiLogoGoogle } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { authContext } from '../../providers/authProvider';
+import Swal from 'sweetalert2';
+import { updateProfile } from 'firebase/auth';
 const SignUp = () => {
+  const navigate = useNavigate()
   const { signUp } = useContext(authContext);
   const { register, handleSubmit, formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     signUp(data.email, data.password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+      .then((result) => {
+        const user = result.user;
+
+        updateProfile(user, {
+          displayName: `${data.name}`,
+        })
+          .then(() => {
+
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+console.log(user);
+        if (user) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Thanks you for register !!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        navigate("/")
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        if (errorMessage) {
+          Swal.fire({
+            title: `${errorMessage}`,
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+        }
       });
-
   }
   return (
     <>

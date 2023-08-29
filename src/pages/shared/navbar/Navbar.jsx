@@ -4,13 +4,24 @@ import { BsPersonCircle } from 'react-icons/bs';
 import { BsFillCartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../../providers/authProvider';
+import Swal from 'sweetalert2';
 const Navbar = () => {
     const { user, loading, logout } = useContext(authContext)
 
-    { loading && <span className="loading loading-spinner text-error"></span> }
+    if (loading) {
+        return <span className="loading loading-spinner text-error"></span>
+    }
     const handleLogOut = () => {
         logout()
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'You Log out successfully !!',
+            showConfirmButton: false,
+            timer: 1500
+          })
     }
+    
 
     return (
         <>
@@ -32,31 +43,32 @@ const Navbar = () => {
                                     <BsFillCartFill className='text-xl'></BsFillCartFill>
                                     <div className="badge badge-secondary">+0</div>
                                 </li>
-                                <li className="uppercase font-inter text-lg font-extrabold"><a
-                                    className="hover:text-[#EEFF25] text-white">{user?.name}</a></li>
+
+                                {user ? <li className="uppercase font-inter text-lg font-extrabold"><Link onClick={handleLogOut} className="hover:text-[#EEFF25] text-white">logout</Link></li> :
+                                    <li className="uppercase font-inter text-lg font-extrabold"><Link to="/login" className="hover:text-[#EEFF25] text-white">signin</Link></li>
+                                }
                             </ul>
                         </div>
                         <a className="btn btn-ghost font-cinzel font-black text-3xl text-white">BISTRO BOSS</a>
-                        <a onClick={handleLogOut} className="btn btn-ghost font-cinzel font-black text-3xl text-white">BISTRO BOSS2</a>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
                             <li className="uppercase font-inter text-lg font-extrabold"><Link to="/" className="hover:text-[#EEFF25] text-white">home</Link></li>
                             <li className="uppercase font-inter text-lg font-extrabold"><Link to="/contact" className="hover:text-[#EEFF25] text-white">contact us</Link></li>
-                            <li className="uppercase font-inter text-lg font-extrabold"><a className="hover:text-[#EEFF25] text-white">dashboard</a></li>
+                            <li className="uppercase font-inter text-lg font-extrabold"><Link to="/secret" className="hover:text-[#EEFF25] text-white">dashboard</Link></li>
                             <li className="uppercase font-inter text-lg font-extrabold"><Link to="/menu" className="hover:text-[#EEFF25] text-white">our menu</Link></li>
                             <li className="uppercase font-inter text-lg font-extrabold"><Link to="/shop/salad" className="hover:text-[#EEFF25] text-white">our shop</Link></li>
                             <button >
-                                <BsFillCartFill className='text-4xl'></BsFillCartFill>
-                                <div className="badge badge-secondary">+0</div>
+                                <BsFillCartFill className='text-4xl text-white'></BsFillCartFill>
+                                <div className="badge badge-secondary text-white">+0</div>
                             </button>
 
-                            <li className="uppercase font-inter text-lg font-extrabold"><a className="hover:text-[#EEFF25] text-white">{user?.email}</a></li>
-                            <li>
-                                <a className="text-4xl">
-                                    <BsPersonCircle></BsPersonCircle>
-                                </a>
-                            </li>
+                            {user ? <li  className="uppercase font-inter text-lg font-extrabold"><Link onClick={handleLogOut} className="hover:text-[#EEFF25] text-white mr-12">logout</Link></li> :
+
+                                <li className="uppercase font-inter text-lg font-extrabold ">
+                                    <Link to="/login" className="hover:text-[#EEFF25] text-white"><BsPersonCircle className='text-white mr-12 text-4xl'></BsPersonCircle></Link>
+                                    </li>
+                            }
                         </ul>
                     </div>
                 </div>
@@ -64,6 +76,6 @@ const Navbar = () => {
         </>
 
     );
-};
+}
 
 export default Navbar;

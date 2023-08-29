@@ -6,6 +6,8 @@ import Shop from "../pages/shop/shop/Shop";
 import Contact from "../pages/contact/contact/Contact";
 import SignUp from "../pages/signUp/SignUp";
 import Login from "../pages/login/Login";
+import Secret from "../pages/shared/secret/Secret";
+import PrivetRouter from "./PrivetRouter";
 
 
 export const router = createBrowserRouter([
@@ -36,6 +38,10 @@ export const router = createBrowserRouter([
         {
           path:"signUp",
           element:<SignUp></SignUp>
+        },
+        {
+          path:"secret",
+          element:<PrivetRouter><Secret></Secret></PrivetRouter>
         }
         
       ],

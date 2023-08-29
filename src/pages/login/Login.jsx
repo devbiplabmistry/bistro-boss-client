@@ -1,26 +1,52 @@
 
 import { Helmet } from 'react-helmet';
 import image from '../../assets/others/authentication1.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 import { BiLogoGoogle } from 'react-icons/bi';
 import { useContext } from 'react';
 import { authContext } from '../../providers/authProvider';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
+    const navigate = useNavigate();
+    const location = useLocation()
     const { login } = useContext(authContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const from = location.state?.from?.pathname || "/";
     const onSubmit = (data) => {
-        console.log(data);
+        // console.log(data);
         login(data.email, data.password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
+                if(user){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Thanks for Sign in !!',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+               
+                navigate(from, { replace: true });
+                
             })
             .catch((error) => {
                 const errorMessage = error.message;
                 console.log(errorMessage);
+                if (errorMessage){
+                    Swal.fire({
+                      title: `${errorMessage}`,
+                      showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                      },
+                     hideClass: {
+                       popup: 'animate__animated animate__fadeOutUp'
+                     }
+                    })
+                 }
             });
     }
     return (
