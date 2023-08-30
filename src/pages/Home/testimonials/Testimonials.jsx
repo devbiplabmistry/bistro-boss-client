@@ -12,7 +12,7 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
 const Testimonials = () => {
     const [comments,setComments]=useState([])
     useEffect(()=>{
-        fetch('comments.json')
+        fetch('http://localhost:5000/reviews')
         .then(res=>res.json())
         .then(data=>setComments(data))
     },[])

@@ -8,9 +8,12 @@ import 'react-tabs/style/react-tabs.css';
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 const Shop = () => {
-    const category = useParams()
+    const category = useParams();
+    const cat=category.category;
+    // console.log(cat);
     const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks']
-    const initialIndex = categories.indexOf(category)
+    const initialIndex = categories.indexOf(cat)
+    // console.log(initialIndex);
     const menu = useMenu()
     const [tabIndex, setTabIndex] = useState(initialIndex);
 
@@ -18,7 +21,7 @@ const Shop = () => {
     const pizzas = menu.filter(item => item.category == "pizza")
     const salads = menu.filter(item => item.category == "salad")
     const soups = menu.filter(item => item.category == "soup")
-    const offereds = menu.filter(item => item.category == "offered")
+    const offers = menu.filter(item => item.category == "offered")
     return (
         <div>
             <Helmet>
@@ -26,12 +29,12 @@ const Shop = () => {
             </Helmet>
             <Cover featuredImg={banner} title="OUR SHOP" subTitle="WOULD YOU LIKE TO TRY A DISH ?"></Cover>
             <Tabs className="mx-auto text-center " defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-                <TabList className="flex  ">
-                    <Tab className="font-inter font-bold text-2xl text-center mx-auto hover:underline transition-all hover:text-[#BB8506]  uppercase">salad</Tab>
-                    <Tab className="font-inter font-bold text-2xl text-center mx-auto hover:underline transition-all hover:text-[#BB8506] uppercase">pizza</Tab>
-                    <Tab className="font-inter font-bold text-2xl text-center mx-auto hover:underline transition-all hover:text-[#BB8506] uppercase">soups</Tab>
-                    <Tab className="font-inter font-bold text-2xl text-center mx-auto hover:underline transition-all hover:text-[#BB8506] uppercase">Desserts</Tab>
-                    <Tab className="font-inter font-bold text-2xl text-center mx-auto hover:underline transition-all hover:text-[#BB8506] uppercase">Drinks</Tab>
+                <TabList>
+                    <Tab>salad</Tab>
+                    <Tab>pizza</Tab>
+                    <Tab>soups</Tab>
+                    <Tab>Desserts</Tab>
+                    <Tab>Drinks</Tab>
                 </TabList>
                 <TabPanel>
                     <ChefRecomanded menu={salads}></ChefRecomanded>
@@ -47,7 +50,7 @@ const Shop = () => {
 
                 </TabPanel>
                 <TabPanel>
-                    <ChefRecomanded menu={offereds}></ChefRecomanded>
+                    <ChefRecomanded menu={offers}></ChefRecomanded>
 
                 </TabPanel>
             </Tabs>

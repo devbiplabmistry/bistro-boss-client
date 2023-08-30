@@ -20,7 +20,7 @@ const Menu = () => {
             <Helmet><title>Bistro Boss || Menu</title></Helmet>
             <Cover featuredImg={banner} title="OUR MENU" subTitle="WOULD YOU LIKE TO TRY A DISH ?"></Cover>
             <CommonTitle subTitle="---Don't miss---" title="TODAY'S OFFER"></CommonTitle>
-            <FoodItem menu={offereds} category="offered"></FoodItem>
+            <FoodItem menu={offereds} category="salad"></FoodItem>
             <Cover featuredImg={chefImg} title="DESSERTS" subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>  
             <FoodItem menu={desserts} category="desserts"></FoodItem>
 
