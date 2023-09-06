@@ -16,7 +16,6 @@ const Shop = () => {
     // console.log(initialIndex);
     const menu = useMenu()
     const [tabIndex, setTabIndex] = useState(initialIndex);
-
     const desserts = menu.filter(item => item.category == "dessert")
     const pizzas = menu.filter(item => item.category == "pizza")
     const salads = menu.filter(item => item.category == "salad")

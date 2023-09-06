@@ -8,42 +8,75 @@ import SignUp from "../pages/signUp/SignUp";
 import Login from "../pages/login/Login";
 import Secret from "../pages/shared/secret/Secret";
 import PrivetRouter from "./PrivetRouter";
+import Dashboard from "../pages/dashboard/dashboard/Dashboard";
+import Cart from "../pages/dashboard/cart/Cart";
+import Review from "../pages/dashboard/review/Review";
+import BookTable from "../pages/dashboard/bookTable/BookTable";
+import Booking from "../pages/dashboard/booking/Booking";
+import UserHome from "../pages/dashboard/userHome/UserHome";
+
 
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main />,
-      children: [
-        {
-          path: "/", 
-          element: <Home/>,
-        },
-        {
-          path:"menu",
-          element:<Menu></Menu>
-        },
-        {
-          path:"shop/:category",
-          element:<Shop></Shop>
-        },
-        {
-          path:"contact",
-          element:<Contact></Contact>
-        },
-        {
-          path:"login",
-          element:<Login></Login>
-        },
-        {
-          path:"signUp",
-          element:<SignUp></SignUp>
-        },
-        {
-          path:"secret",
-          element:<PrivetRouter><Secret></Secret></PrivetRouter>
-        }
-        
-      ],
-    },
-  ]);
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "menu",
+        element: <Menu></Menu>
+      },
+      {
+        path: "shop/:category",
+        element: <Shop></Shop>
+      },
+      {
+        path: "contact",
+        element: <Contact></Contact>
+      },
+      {
+        path: "login",
+        element: <Login></Login>
+      },
+      {
+        path: "signUp",
+        element: <SignUp></SignUp>
+      },
+      {
+        path: "secret",
+        element: <PrivetRouter><Secret></Secret></PrivetRouter>
+      }
+
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <PrivetRouter><Dashboard></Dashboard></PrivetRouter>,
+    children: [
+      {
+        path: "cart",
+        element: <Cart></Cart>
+      },
+      {
+        path: "review",
+        element: <Review></Review>
+      },
+      {
+        path: "bookTable",
+        element: <BookTable></BookTable>
+      },
+      {
+        path: "booking",
+        element: <Booking></Booking>
+      },
+      {
+        path: "userHome",
+        element: <UserHome></UserHome>
+      }
+    ]
+  }
+]);

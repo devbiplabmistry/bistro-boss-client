@@ -5,9 +5,10 @@ import { BsFillCartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../../providers/authProvider';
 import Swal from 'sweetalert2';
+import useCart from '../../../assets/components/hooks/useCart';
 const Navbar = () => {
     const { user, loading, logout } = useContext(authContext)
-
+    const cart =useCart()
     if (loading) {
         return <span className="loading loading-spinner text-error"></span>
     }
@@ -16,13 +17,11 @@ const Navbar = () => {
         Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'You Log out successfully !!',
+            title: `${user?.displayName} you logOut !!`,
             showConfirmButton: false,
             timer: 1500
           })
     }
-    
-
     return (
         <>
             <div className='absolute w-full z-40'>
@@ -58,12 +57,14 @@ const Navbar = () => {
                             <li className="uppercase font-inter text-lg font-extrabold"><Link to="/secret" className="hover:text-[#EEFF25] text-white">dashboard</Link></li>
                             <li className="uppercase font-inter text-lg font-extrabold"><Link to="/menu" className="hover:text-[#EEFF25] text-white">our menu</Link></li>
                             <li className="uppercase font-inter text-lg font-extrabold"><Link to="/shop/salad" className="hover:text-[#EEFF25] text-white">our shop</Link></li>
-                            <button >
-                                <BsFillCartFill className='text-4xl text-white'></BsFillCartFill>
-                                <div className="badge badge-secondary text-white">+0</div>
-                            </button>
+                            <li >
+                              <Link ><BsFillCartFill className='text-4xl text-white'></BsFillCartFill></Link>
+                               <Link to="/dashboard/cart"> <span className="absolute top-2 left-7 font-black text-secondary text-xl">{cart[0]?.length || 0}</span></Link>
+                            </li>
 
-                            {user ? <li  className="uppercase font-inter text-lg font-extrabold"><Link onClick={handleLogOut} className="hover:text-[#EEFF25] text-white mr-12">logout</Link></li> :
+                            {user ? <li  className="uppercase font-inter text-lg font-extrabold"><Link onClick={handleLogOut} className="hover:text-[#EEFF25] text-white mr-12">
+                                <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
+                                </Link></li> :
 
                                 <li className="uppercase font-inter text-lg font-extrabold ">
                                     <Link to="/login" className="hover:text-[#EEFF25] text-white"><BsPersonCircle className='text-white mr-12 text-4xl'></BsPersonCircle></Link>

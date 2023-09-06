@@ -9,6 +9,7 @@ export const authContext = createContext()
 const AuthProvider = ({ children }) => {
     const auth = getAuth(app);
     const [user, setUser] = useState()
+    console.log(user);
     const [loading, setLoading] = useState(true)
 
     const signUp = (email, password) => {
@@ -35,15 +36,31 @@ const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser)
+        const unsubscribe = onAuthStateChanged(auth, (result) => {
+            fetch('http://localhost:5000/jwt',{
+                method:'post',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body:JSON.stringify(result)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                if (data?.token) {
+                    
+                    localStorage.setItem('access-token',data?.token)    
+                }    
+            })
+            setUser(result)
+            if(!user) {
+                localStorage.removeItem('access-token'); 
+            }
             setLoading(false)
-            console.log(currentUser);
         })
         return () => {
             unsubscribe();
         }
-    }, [auth])
+    }, [auth,user])
 
     return (
         <authContext.Provider value={authInfo}>

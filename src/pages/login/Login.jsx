@@ -15,6 +15,7 @@ const Login = () => {
     const { login } = useContext(authContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const from = location.state?.from?.pathname || "/";
+    // console.log(from);
     const onSubmit = (data) => {
         // console.log(data);
         login(data.email, data.password)
@@ -24,7 +25,7 @@ const Login = () => {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'Thanks for Sign in !!',
+                        title: `Welcome ${user?.displayName} `,
                         showConfirmButton: false,
                         timer: 1500
                       })
