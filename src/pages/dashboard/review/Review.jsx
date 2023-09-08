@@ -11,15 +11,15 @@ import useAxios from "../../../assets/components/hooks/useAxios";
 const Review = () => {
     const [rating, setRating] = useState(3);
     const { user } = useContext(authContext)
-    const { email } = user;
+    // const { email } = user;
     const { register, handleSubmit, reset } = useForm()
     const [instance] = useAxios()
     console.log(instance);
     const onSubmit = (data) => {
         const { name, details } = data;
-        const reviews = { name, details, rating, email };
+        const reviews = { name, details, rating, email:user?.email };
         
-        instance.post('/reviews', { reviews }) 
+        instance.post('/reviews', reviews ) 
             .then(response => {
                 if (response.data && response.data.insertedId) {
                     Swal.fire({
@@ -42,7 +42,7 @@ const Review = () => {
     };
     
     return (
-        <div >
+        <div className="my-8" >
             <CommonTitle subTitle="---Sharing is Caring!!!---" title="GIVE A REVIEW..."></CommonTitle>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content  flex-col lg:flex-row-reverse px-32">

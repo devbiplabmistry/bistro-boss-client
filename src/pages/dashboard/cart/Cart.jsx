@@ -2,6 +2,7 @@ import { BsTrash } from "react-icons/bs";
 import useCart from "../../../assets/components/hooks/useCart";
 import CommonTitle from "../../shared/commonTitle/CommonTitle";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const [cart, refetch] = useCart()
@@ -37,13 +38,16 @@ const Cart = () => {
             }
         })
     }
+
     return (
         <div className="ml-8 w-full">
             <CommonTitle subTitle="---My Cart---" title="WANNA ADD MORE?"></CommonTitle>
             <div className="flex gap-8 mb-10 mt-28 justify-center justify-between">
                 <h3 className="font-cinzel font-bold text-3xl">Total order: {cart.length}</h3>
                 <h3 className="font-cinzel font-bold text-3xl">Total price: ${price}</h3>
-                <h3 className="font-cinzel text-white font-bold py-3 px-4 rounded bg-[#D1A054] flex items-center">Pay</h3>
+                <h3 className="font-cinzel text-white font-bold py-3 px-4 rounded bg-[#D1A054] flex items-center">
+                    <Link to="/dashboard/payment">Pay</Link>
+                </h3>
             </div>
             <div className="overflow-x-auto">
                 <table className="table">

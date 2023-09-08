@@ -14,6 +14,8 @@ import Review from "../pages/dashboard/review/Review";
 import BookTable from "../pages/dashboard/bookTable/BookTable";
 import Booking from "../pages/dashboard/booking/Booking";
 import UserHome from "../pages/dashboard/userHome/UserHome";
+import Payment from "../pages/dashboard/payment/Payment";
+import PaymentHistory from "../pages/dashboard/paymentHistory/PaymentHistory";
 
 
 
@@ -76,6 +78,14 @@ export const router = createBrowserRouter([
       {
         path: "userHome",
         element: <UserHome></UserHome>
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>
+      },
+      {
+        path: "paymentHistory",
+        element: <PaymentHistory></PaymentHistory>
       }
     ]
   }

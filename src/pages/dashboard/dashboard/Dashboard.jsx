@@ -28,7 +28,7 @@ const Dashboard = () => {
                         </div>
                         <NavLink to="/dashboard/userHome" className="flex gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active"><FaHome></FaHome>User Home</NavLink>
                         <NavLink to="/dashboard/bookTable" className="flex gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active"> <MdOutlineCardTravel></MdOutlineCardTravel>Reservation</NavLink>
-                        <NavLink to="dashboard/payment" className="flex gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active"> <FaWallet></FaWallet>Payment History</NavLink>
+                        <NavLink to="/dashboard/paymentHistory" className="flex gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active"> <FaWallet></FaWallet>Payment History</NavLink>
                         <NavLink to="/dashboard/cart" className="flex items-center gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active"> <BsFillCartFill></BsFillCartFill>My Cart<span className="font-roboto font-medium text-2xl text-green-600  ">{cart.length}</span></NavLink>
                         <NavLink to="/dashboard/review" className="flex gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active" > <MdOutlineReviews></MdOutlineReviews>Add Review</NavLink>
                         <NavLink to="/dashboard/booking" className="flex gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active"> <TbBrandBooking></TbBrandBooking>My Booking</NavLink>

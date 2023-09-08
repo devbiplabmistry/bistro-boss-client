@@ -3,9 +3,9 @@ import { useContext, useEffect } from "react";
 import { authContext } from "../../../providers/authProvider";
 
 const useAxios = () => {
-    // const {logout}=useContext(authContext)
+    const { logout } = useContext(authContext);
     const instance = axios.create({
-        baseURL: 'http://localhost:5000',  
+        baseURL: 'http://localhost:5000',
         headers: {
             "Content-Type": "application/json"
         }
@@ -23,13 +23,13 @@ const useAxios = () => {
         }, function (error) {
             if (error.response) {
                 const status = error.response.status;
-                if (error.response || status === 401 || status === 403) {
-                    // logout()   
+                if (status === 401 || status === 403) {
+                    // Call logout() when a 401 or 403 error occurs
+                    // logout();
                 }
             }
             return Promise.reject(error);
         });
-
     }, [instance]);
 
     return [instance];

@@ -3,7 +3,7 @@ import image from "../../assets/others/authentication2.png"
 import { BiLogoGoogle } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useContext, useState } from 'react';
+import { useContext,  } from 'react';
 import { authContext } from '../../providers/authProvider';
 import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';
@@ -11,8 +11,7 @@ import { updateProfile } from 'firebase/auth';
 const SignUp = () => {
   const navigate = useNavigate()
   const { signUp } = useContext(authContext);
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const [photoImg, setPhotoImage] = useState()
+  const { register, handleSubmit, formState: { errors } } = useForm()
   const handleSignUp = async (data) => {
     try {
       console.log(data);
@@ -29,8 +28,8 @@ const SignUp = () => {
 
       if (response.ok) {
         const result = await response.json();
-        setPhotoImage(result.data.display_url)
-        console.log("ttttttttt", result.data.display_url)
+        data.photoURL=result.data.display_url
+        console.log(data)
       }
     } catch (error) {
       console.error("Image upload error:", error);
@@ -42,7 +41,7 @@ const SignUp = () => {
 
       await updateProfile(user, {
         displayName: data.name,
-        photoURL: `${photoImg}`
+        photoURL: data.photoURL,
       });
 
       if (user) {
