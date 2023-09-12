@@ -16,6 +16,7 @@ import Booking from "../pages/dashboard/booking/Booking";
 import UserHome from "../pages/dashboard/userHome/UserHome";
 import Payment from "../pages/dashboard/payment/Payment";
 import PaymentHistory from "../pages/dashboard/paymentHistory/PaymentHistory";
+import AllUsers from "../pages/dashboard/admin/allUsers/AllUsers";
 
 
 
@@ -86,7 +87,15 @@ export const router = createBrowserRouter([
       {
         path: "paymentHistory",
         element: <PaymentHistory></PaymentHistory>
-      }
+      },
+      {
+        path: "allusers",
+        element: <AllUsers></AllUsers>
+      },
+      {
+        path: "allusers",
+        element: <AllUsers></AllUsers>
+      },
     ]
   }
 ]);

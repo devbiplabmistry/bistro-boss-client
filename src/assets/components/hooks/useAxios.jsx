@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { authContext } from "../../../providers/authProvider";
 
 const useAxios = () => {
@@ -30,7 +30,7 @@ const useAxios = () => {
             }
             return Promise.reject(error);
         });
-    }, [instance]);
+    }, [instance, logout]);
 
     return [instance];
 };

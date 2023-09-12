@@ -3,23 +3,26 @@ import image from "../../assets/others/authentication2.png"
 import { BiLogoGoogle } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useContext,  } from 'react';
+import { useContext, } from 'react';
 import { authContext } from '../../providers/authProvider';
 import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';
+import useAxios from '../../assets/components/hooks/useAxios';
+
 
 const SignUp = () => {
+  const [instance] = useAxios()
   const navigate = useNavigate()
   const { signUp } = useContext(authContext);
   const { register, handleSubmit, formState: { errors } } = useForm()
   const handleSignUp = async (data) => {
     try {
-      console.log(data);
+      // console.log(data);
       const image_token = import.meta.env.VITE_image_token
       const image_url = `https://api.imgbb.com/1/upload?key=${image_token}`
       const formData = new FormData();
       formData.append("image", data.photoFile[0]);
-      console.log(data.photoFile[0]);
+      // console.log(data.photoFile[0]);
 
       const response = await fetch(image_url, {
         method: "POST",
@@ -28,7 +31,7 @@ const SignUp = () => {
 
       if (response.ok) {
         const result = await response.json();
-        data.photoURL=result.data.display_url
+        data.photoURL = result.data.display_url
         console.log(data)
       }
     } catch (error) {
@@ -43,6 +46,10 @@ const SignUp = () => {
         displayName: data.name,
         photoURL: data.photoURL,
       });
+      instance.post('/users', { name: user?.displayName, email: user?.email, roll: 'user' })
+        .then(res => {
+          console.log(res.data);
+        })
 
       if (user) {
         Swal.fire({
