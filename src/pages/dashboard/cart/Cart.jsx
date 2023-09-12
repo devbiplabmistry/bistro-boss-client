@@ -8,7 +8,9 @@ const Cart = () => {
     const [cart, refetch] = useCart()
     const token = localStorage.getItem('access-token')
     const total = cart.reduce((sum, item) => sum + item.price, 0)
-    const price = parseFloat(total.toFixed(2))
+    const prices =parseFloat(total)
+    const price2 =prices.toFixed(2)
+    const price =parseFloat(price2)
     const handleDelete = (item) => {
         Swal.fire({
             title: `Do you want Delete ${item?.name}?`,
