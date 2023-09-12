@@ -72,7 +72,7 @@ const AllUsers = () => {
     return (
         <div className="w-full   ml-8 ">
             <CommonTitle subTitle="---How many??---" title="MANAGE ALL USERS"></CommonTitle>
-            <h3 className="font-cinzel font-bold text-3xl mt-16 mb-4">Total users:</h3>
+            <h3 className="font-cinzel font-bold text-3xl mt-16 mb-4">Total users: {users?.length}</h3>
             <table className="table">
                 <thead>
                     <tr className="bg-[#D1A054] rounded-[15px 15px 0 0]">

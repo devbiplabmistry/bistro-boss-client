@@ -33,8 +33,8 @@ const Dashboard = () => {
                         </div>
                         <NavLink to="/dashboard/userHome" className="flex gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active"><FaHome></FaHome>Admin Home</NavLink>
                         <NavLink to="/dashboard/addItem" className="flex gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active"> <ImSpoonKnife></ImSpoonKnife> Ad Items</NavLink>
-                        <NavLink to="/dashboard/paymentHistory" className="flex gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active"> <MdOutlineVerticalDistribute></MdOutlineVerticalDistribute>Manage Items</NavLink>
-                        <NavLink to="/dashboard/cart" className="flex items-center gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active"><BiSolidBookAlt></BiSolidBookAlt> Manage Bookings<span className="font-roboto font-medium text-2xl text-green-600  ">{cart.length}</span></NavLink>
+                        <NavLink to="/dashboard/manageItem" className="flex gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active"> <MdOutlineVerticalDistribute></MdOutlineVerticalDistribute>Manage Items</NavLink>
+                        <NavLink to="/dashboard/manageBookings" className="flex items-center gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active"><BiSolidBookAlt></BiSolidBookAlt> Manage Bookings<span className="font-roboto font-medium text-2xl text-green-600  ">{cart.length}</span></NavLink>
 
                         <NavLink to="/dashboard/allUsers" className="flex gap-2 mb-6 font-cinzel font-semibold text-base" activeClassName="active" ><FaUsers></FaUsers>All Users</NavLink>
 

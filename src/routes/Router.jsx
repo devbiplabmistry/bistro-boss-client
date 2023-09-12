@@ -18,6 +18,9 @@ import Payment from "../pages/dashboard/payment/Payment";
 import PaymentHistory from "../pages/dashboard/paymentHistory/PaymentHistory";
 import AllUsers from "../pages/dashboard/admin/allUsers/AllUsers";
 import AddItem from "../pages/dashboard/admin/addItem/AddItem";
+import Update from "../pages/dashboard/admin/update/Update";
+import ManageItems from "../pages/dashboard/admin/manageItem/ManageItems";
+import ManageBookings from "../pages/dashboard/admin/manageBooking/ManageBookings";
 
 
 
@@ -97,6 +100,18 @@ export const router = createBrowserRouter([
         path: "addItem",
         element: <AddItem></AddItem>
       },
+      {
+        path: "update/:id",
+        element: <Update></Update>,
+      },
+      {
+        path: "manageItem",
+        element: <ManageItems></ManageItems>
+      },
+      {
+        path: "manageBookings",
+        element: <ManageBookings></ManageBookings>
+      }
     ]
   }
 ]);
