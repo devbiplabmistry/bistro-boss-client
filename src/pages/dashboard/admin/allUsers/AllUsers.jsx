@@ -45,6 +45,30 @@ const AllUsers = () => {
         })
 
     }
+    const handleMakeAdmin = (item) => {
+        Swal.fire({
+            title: `is ${item.name} Admin?`,
+            showCancelButton: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                instance.put(`/user/${item._id}`)
+                    .then(res => {
+                        console.log(res.data);
+                        refetch()
+                        if (res.data) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: `${item.name} is now Admin !!`,
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    })
+            }
+        })
+
+    }
     return (
         <div className="w-full   ml-8 ">
             <CommonTitle subTitle="---How many??---" title="MANAGE ALL USERS"></CommonTitle>
@@ -71,10 +95,14 @@ const AllUsers = () => {
                             <td>
                                 <h3 className=" font-roboto font-normal text-base">{item?.email}</h3>
                             </td>
-                            <td>
-                                <h3 className=" font-roboto font-normal rounded-lg flex justify-center items-center text-base w-8 h-8 bg-[#D1A054]">{
-                                    item?.roll == "user" && <FaUsers className="text-lg text-white"></FaUsers>
+                            <td onClick={() => handleMakeAdmin(item)}>
+                                {item?.roll == "user" ? <h3 className="rounded-lg flex justify-center items-center text-base w-8 h-8 bg-[#D1A054]">{
+                                    <FaUsers className="text-lg text-white"></FaUsers>
                                 }</h3>
+                                    :
+                                    <h3 className=" font-roboto font-normal rounded-lg flex justify-center items-center text-base  ">Admin</h3>
+
+                                }
                             </td>
                             <td>
                                 <button onClick={() => handleDelete(item)} className="btn btn-error"><BsTrash className="text-white "></BsTrash></button>

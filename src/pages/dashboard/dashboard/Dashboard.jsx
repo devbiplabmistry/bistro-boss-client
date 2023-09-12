@@ -8,11 +8,12 @@ import { BiSolidBookAlt } from "react-icons/bi";
 import { ImSpoonKnife } from "react-icons/im";
 import { GrContact } from "react-icons/gr";
 import useCart from "../../../assets/components/hooks/useCart";
+import useAdmin from "../../../assets/components/hooks/useAdmin";
 
 
 const Dashboard = () => {
     const [cart] = useCart()
-    const isAdmin = true;
+    const [isAdmin]= useAdmin();
     return (
         <div className="w-full">
             <div className="drawer lg:drawer-open">
