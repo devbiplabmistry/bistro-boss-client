@@ -17,6 +17,7 @@ import UserHome from "../pages/dashboard/userHome/UserHome";
 import Payment from "../pages/dashboard/payment/Payment";
 import PaymentHistory from "../pages/dashboard/paymentHistory/PaymentHistory";
 import AllUsers from "../pages/dashboard/admin/allUsers/AllUsers";
+import AddItem from "../pages/dashboard/admin/addItem/AddItem";
 
 
 
@@ -89,12 +90,12 @@ export const router = createBrowserRouter([
         element: <PaymentHistory></PaymentHistory>
       },
       {
-        path: "allusers",
+        path: "allUsers",
         element: <AllUsers></AllUsers>
       },
       {
-        path: "allusers",
-        element: <AllUsers></AllUsers>
+        path: "addItem",
+        element: <AddItem></AddItem>
       },
     ]
   }

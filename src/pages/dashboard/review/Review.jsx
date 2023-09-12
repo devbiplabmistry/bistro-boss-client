@@ -14,7 +14,6 @@ const Review = () => {
     // const { email } = user;
     const { register, handleSubmit, reset } = useForm()
     const [instance] = useAxios()
-    console.log(instance);
     const onSubmit = (data) => {
         const { name, details } = data;
         const reviews = { name, details, rating, email:user?.email };
