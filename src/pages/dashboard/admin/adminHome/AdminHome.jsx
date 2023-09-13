@@ -111,7 +111,7 @@ const AdminHome = () => {
 
             </div>
             
-            <div className="flex">
+            <div className="flex mt-8">
 
             <div className="w-1/2">
                     <BarChart

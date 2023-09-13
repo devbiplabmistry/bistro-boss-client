@@ -13,7 +13,7 @@ import useAxios from '../../assets/components/hooks/useAxios';
 const SignUp = () => {
   const [instance] = useAxios()
   const navigate = useNavigate()
-  const { signUp } = useContext(authContext);
+  const { signUp,googleSignIn } = useContext(authContext);
   const { register, handleSubmit, formState: { errors } } = useForm()
   const handleSignUp = async (data) => {
     try {
@@ -77,6 +77,17 @@ const SignUp = () => {
       }
     }
   };
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+        .then((result) => {
+        })
+        .catch((error) => {
+            console.log(error);
+
+        });
+    navigate("/")
+
+}
 
   return (
     <>
@@ -152,7 +163,7 @@ const SignUp = () => {
               </form>
               <p className='mx-auto pb-6 capitalize'><small className='font-inter font-normal text-xl text-[#D1A054]'>Already registered ?<Link to="/login"> go to login</Link> </small></p>
               <p className='mx-auto pb-4'><small className='font-inter font-normal text-xl'>or Sign In With</small></p>
-              <small className='mx-auto mb-11'>
+              <small onClick={handleGoogleSignIn} className='mx-auto mb-11'>
                 <BiLogoGoogle className='text-5xl'></BiLogoGoogle>
               </small>
             </div>
