@@ -17,6 +17,7 @@ const CheckoutForm = () => {
   const [paymentId, setPaymentId] = useState('')
   const [processing, setProcessing] = useState(false)
   const [cart, refetch] = useCart()
+ 
   const total = cart.reduce((sum, item) => sum + item.price, 0)
   const price = total.toFixed(2)
 
@@ -79,7 +80,7 @@ const CheckoutForm = () => {
         Amount: price,
         status: 'pending',
         transactionId: paymentIntent.id,
-        menuCartId: cart.map(item => item._id),
+        menuCartId: cart.map(item => item.itemId),
       }
       instance.post('/payments', { payments })
         .then(res => {
