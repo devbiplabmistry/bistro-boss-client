@@ -54,7 +54,7 @@ const Navbar = () => {
                         <ul className="menu menu-horizontal px-1">
                             <li className="uppercase font-inter text-lg font-extrabold"><Link to="/" className="hover:text-[#EEFF25] text-white">home</Link></li>
                             <li className="uppercase font-inter text-lg font-extrabold"><Link to="/contact" className="hover:text-[#EEFF25] text-white">contact us</Link></li>
-                            <li className="uppercase font-inter text-lg font-extrabold"><Link to="/secret" className="hover:text-[#EEFF25] text-white">dashboard</Link></li>
+                            <li className="uppercase font-inter text-lg font-extrabold"><Link to="/dashboard/cart" className="hover:text-[#EEFF25] text-white">dashboard</Link></li>
                             <li className="uppercase font-inter text-lg font-extrabold"><Link to="/menu" className="hover:text-[#EEFF25] text-white">our menu</Link></li>
                             <li className="uppercase font-inter text-lg font-extrabold"><Link to="/shop/salad" className="hover:text-[#EEFF25] text-white">our shop</Link></li>
                             <li >

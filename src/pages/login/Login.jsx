@@ -2,21 +2,19 @@
 import { Helmet } from 'react-helmet';
 import image from '../../assets/others/authentication1.png';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { BiLogoGoogle } from 'react-icons/bi';
 import { useContext } from 'react';
 import { authContext } from '../../providers/authProvider';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
-import useAxios from '../../assets/components/hooks/useAxios';
 
 
 const Login = () => {
     // const { login, googleSignIn } = useContext(authContext)
-    const { login, googleSignIn, user } = useContext(authContext)
+    const { login,  user } = useContext(authContext)
     console.log(user);
     const navigate = useNavigate();
     const location = useLocation()
-    const [instance] = useAxios()
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const from = location.state?.from?.pathname || "/";
     // console.log(from);
@@ -55,17 +53,7 @@ const Login = () => {
             });
     }
 
-    const handleGoogleSignIn = () => {
-        googleSignIn()
-            .then((result) => {
-            })
-            .catch((error) => {
-                console.log(error);
-
-            });
-        navigate("/")
-
-    }
+   
     return (
         <div>
             <Helmet>
@@ -97,10 +85,6 @@ const Login = () => {
                             </div>
                         </form>
                         <p className='mx-auto pb-6 capitalize'><small className='font-inter font-normal text-xl text-[#D1A054]'>new here ? <Link to="/signUp">create new account</Link> </small></p>
-                        <p className='mx-auto pb-4'><small className='font-inter font-normal text-xl'>or Sign In With</small></p>
-                        <small onClick={handleGoogleSignIn} className='mx-auto mb-11'>
-                            <BiLogoGoogle className='text-5xl'></BiLogoGoogle>
-                        </small>
                     </div>
                 </div>
             </div>

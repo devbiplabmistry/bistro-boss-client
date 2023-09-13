@@ -25,14 +25,14 @@ const AddItem = () => {
             .then(res => res.json())
             .then(response => {
                 data.images= response.data.display_url
-                instance.post(`/addItem?email=${user?.email}`, { name: data?.name, recipe: data?.recipe, image: data?.images, category: data?.category, price: data?.price })
+                instance.post(`/addItem?email=${user?.email}`, { name: data?.Name, recipe: data?.recipe, image: data?.images, category: data?.category, price: data?.price })
                 .then(res=>{
                     reset()
                     if(res.data.insertedId){
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
-                            title: `${res.data.name} added sucessfully`,
+                            title: `${res.data.Name} added sucessfully`,
                             showConfirmButton: false,
                             timer: 1500
                           });

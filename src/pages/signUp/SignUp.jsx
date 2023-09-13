@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet';
 import image from "../../assets/others/authentication2.png"
-import { BiLogoGoogle } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useContext, } from 'react';
@@ -13,7 +12,7 @@ import useAxios from '../../assets/components/hooks/useAxios';
 const SignUp = () => {
   const [instance] = useAxios()
   const navigate = useNavigate()
-  const { signUp,googleSignIn } = useContext(authContext);
+  const { signUp } = useContext(authContext);
   const { register, handleSubmit, formState: { errors } } = useForm()
   const handleSignUp = async (data) => {
     try {
@@ -77,21 +76,12 @@ const SignUp = () => {
       }
     }
   };
-  const handleGoogleSignIn = () => {
-    googleSignIn()
-        .then((result) => {
-        })
-        .catch((error) => {
-            console.log(error);
 
-        });
-    navigate("/")
 
-}
 
   return (
     <>
-      <div>
+      <div >
         <Helmet>
           <title>Bistro Boss || SignUp</title>
         </Helmet>
@@ -107,14 +97,14 @@ const SignUp = () => {
                     <span className="label-text font-inter font-semibold text-xl">Name*</span>
                   </label>
                   <input type="text" {...register("name", { required: true })}
-                    name='name' placeholder="type here" className="input input-bordered" />
+                    name='name' placeholder="type here" className="input input-bordered w-full" />
                   {errors.name && <span className='font-inter font-medium text-xl text-red-600'>Name is required</span>}
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text font-inter font-semibold text-xl">Email*</span>
                   </label>
-                  <input type="email" name='email' {...register("email", { required: true })} placeholder="type here" className="input input-bordered" />
+                  <input type="email" name='email' {...register("email", { required: true })} placeholder="type here" className="input input-bordered w-full" />
                   {errors.email && <span className='font-inter font-medium text-xl text-red-600'>Email is required</span>}
                 </div>
                 <div className="form-control">
@@ -140,7 +130,7 @@ const SignUp = () => {
                       },
                     })}
                     placeholder="Enter your password"
-                    className="input input-bordered"
+                    className="input input-bordered w-full"
                   />
                   {errors.password && (
                     <span className='font-inter font-medium text-xl text-red-600'>
@@ -153,7 +143,7 @@ const SignUp = () => {
                     <span className="label-text font-inter font-semibold text-xl">Photo*</span>
                   </label>
                   <input type="file" {...register("photoFile", { required: true })}
-                    name='photoFile' placeholder="type here" className="input" />
+                    name='photoFile' placeholder="type here" className="input w-full" />
                   {errors.photoFile && <span className='font-inter font-medium text-xl text-red-600'>photo is required</span>}
                 </div>
 
@@ -162,10 +152,6 @@ const SignUp = () => {
                 </div>
               </form>
               <p className='mx-auto pb-6 capitalize'><small className='font-inter font-normal text-xl text-[#D1A054]'>Already registered ?<Link to="/login"> go to login</Link> </small></p>
-              <p className='mx-auto pb-4'><small className='font-inter font-normal text-xl'>or Sign In With</small></p>
-              <small onClick={handleGoogleSignIn} className='mx-auto mb-11'>
-                <BiLogoGoogle className='text-5xl'></BiLogoGoogle>
-              </small>
             </div>
           </div>
         </div>

@@ -17,10 +17,11 @@ const CheckoutForm = () => {
   const [paymentId, setPaymentId] = useState('')
   const [processing, setProcessing] = useState(false)
   const [cart, refetch] = useCart()
- 
+ console.log(cart);
   const total = cart.reduce((sum, item) => sum + item.price, 0)
-  const price = total.toFixed(2)
-
+  const total2=parseFloat(total).toFixed(2)
+  const price =parseFloat(total2)
+  
   useEffect(() => {
     if (price > 0) {
       instance.post("/create-payment-intent", { price })
@@ -29,7 +30,7 @@ const CheckoutForm = () => {
         });
     }
     refetch()
-  }, [price, instance,refetch]);
+  }, [refetch]);
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) {
@@ -80,13 +81,14 @@ const CheckoutForm = () => {
         Amount: price,
         status: 'pending',
         transactionId: paymentIntent.id,
-        menuCartId: cart.map(item => item.itemId),
+        menuCartId: cart.map(item => item._id),
+        itemId: cart.map(item => item.itemId),
       }
       instance.post('/payments', { payments })
-        .then(res => {
-          console.log(res.data);
-          if (res.data.deletedCount > 0) {
-            refetch()
+      .then(res => {
+        console.log(res.data);
+        if (res.data.deletedCount > 0) {
+          refetch()
           }
         })
 

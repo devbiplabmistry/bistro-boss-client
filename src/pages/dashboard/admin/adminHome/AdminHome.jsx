@@ -7,11 +7,6 @@ import useAxios from "../../../../assets/components/hooks/useAxios";
 import useMenu from "../../../../assets/components/hooks/useMenu";
 import { useQuery } from "react-query";
 import { Bar, BarChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-
-
-
-
-
 const AdminHome = () => {
     const { data } = useQuery({
         queryKey: ['data'],
@@ -21,6 +16,7 @@ const AdminHome = () => {
         }
     })
     const [payments] = useGet("payments")
+    // console.log(payments);
     const menu = useMenu()
     const total = payments.reduce((sum, item) => sum + item.Amount, 0)
     const quantity2 = payments.reduce((sum, item) => sum + item.quantity, 0)
@@ -110,10 +106,10 @@ const AdminHome = () => {
                 </div>
 
             </div>
-            
-            <div className="flex mt-8">
 
-            <div className="w-1/2">
+            <div className="flex">
+
+                <div className="w-1/2">
                     <BarChart
                         width={500}
                         height={300}
@@ -151,7 +147,7 @@ const AdminHome = () => {
                             >
                                 {data?.map((entry, index) => (
                                     // <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                    <Cell name={entry.category} key={`cell-${index}`} fill={colors[index % colors.length]} />
+                                    <Cell name={entry?.category} key={`cell-${index}`} fill={COLORS[index % colors.length]} />
 
                                 ))}
                             </Pie>

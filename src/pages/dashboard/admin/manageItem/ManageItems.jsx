@@ -23,17 +23,17 @@ const ManageItems = () => {
                 instance.delete(`/menu/${item._id}`)
                     .then(res => {  
                         if (res.data.deletedCount>0) {
-                            refetch()
                             Swal.fire({
                                 position: 'top-end',
                                 icon: 'success',
-                                title: `${item.name} deleted sucessfull !!`,
+                                title: `${item.Name} deleted sucessfull !!`,
                                 showConfirmButton: false,
                                 timer: 1500
                             })
                         }
                      
                     })
+                    refetch()
             }
         })
 

@@ -8,7 +8,7 @@ import useGet from "../../../assets/components/hooks/useGet";
 const UserHome = () => {
     const menu = useMenu()
     const { user } = useContext(authContext)
-    const [payments] = useGet('payments')
+    const [payments] = useGet('payment')
     const [booking] = useGet('booking')
     const [review] = useGet('reviews')
     return (
