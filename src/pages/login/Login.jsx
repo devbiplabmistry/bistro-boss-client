@@ -10,8 +10,7 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
     // const { login, googleSignIn } = useContext(authContext)
-    const { login,  user } = useContext(authContext)
-    console.log(user);
+    const { login} = useContext(authContext)
     const navigate = useNavigate();
     const location = useLocation()
 

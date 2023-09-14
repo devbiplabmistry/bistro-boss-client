@@ -6,8 +6,6 @@ import Shop from "../pages/shop/shop/Shop";
 import Contact from "../pages/contact/contact/Contact";
 import SignUp from "../pages/signUp/SignUp";
 import Login from "../pages/login/Login";
-import Secret from "../pages/shared/secret/Secret";
-import PrivetRouter from "./PrivetRouter";
 import Dashboard from "../pages/dashboard/dashboard/Dashboard";
 import Cart from "../pages/dashboard/cart/Cart";
 import Review from "../pages/dashboard/review/Review";
@@ -22,6 +20,7 @@ import Update from "../pages/dashboard/admin/update/Update";
 import ManageItems from "../pages/dashboard/admin/manageItem/ManageItems";
 import ManageBookings from "../pages/dashboard/admin/manageBooking/ManageBookings";
 import AdminHome from "../pages/dashboard/admin/adminHome/AdminHome";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -59,7 +58,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <PrivetRouter><Dashboard></Dashboard></PrivetRouter>,
+    element: <Dashboard></Dashboard>,
     children: [
       {
         path: "cart",
@@ -91,27 +90,27 @@ export const router = createBrowserRouter([
       },
       {
         path: "allUsers",
-        element: <AllUsers></AllUsers>
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
       },
       {
         path: "addItem",
-        element: <AddItem></AddItem>
+        element: <AdminRoute><AddItem></AddItem></AdminRoute>
       },
       {
         path: "update/:id",
-        element: <Update></Update>,
+        element: <AdminRoute><Update></Update></AdminRoute>,
       },
       {
         path: "manageItem",
-        element: <ManageItems></ManageItems>
+        element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
       },
       {
         path: "manageBookings",
-        element: <ManageBookings></ManageBookings>
+        element: <AdminRoute><ManageBookings></ManageBookings></AdminRoute>
       },
       {
         path: "adminHome",
-        element: <AdminHome></AdminHome>
+        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
       }
     ]
   }
